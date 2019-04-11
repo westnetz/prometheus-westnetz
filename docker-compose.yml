@@ -11,6 +11,16 @@ services:
         read_only: true
     networks:
       - prometheus-exporters
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.14.0@sha256:c20445e0cc628fa4b227fe2f694c22a314beb43fd8297095b6ee6cbc67161336
+    read_only: yes
+    volumes:
+      - type: bind
+        source: ./blackbox-exporter/config.yml
+        target: /etc/blackbox_exporter/config.yml
+        read_only: true
+    networks:
+      - prometheus-exporters
 
 networks:
   prometheus-exporters:
