@@ -21,6 +21,24 @@ services:
         read_only: true
     networks:
       - prometheus-exporters
+  prometheus:
+    image: prom/prometheus:v2.8.1@sha256:7ebbdf175da46fa346ba1e24cf0299bf47c31d199ffc276df1c68ed323606c31
+    read_only: yes
+    volumes:
+      - type: bind
+        source: ./prometheus
+        target: /etc/prometheus
+        read_only: true
+      - type: volume
+        source: prometheus
+        target: /prometheus
+    networks:
+      - prometheus-exporters
+      - prometheus-frontend
 
 networks:
   prometheus-exporters:
+  prometheus-frontend:
+
+volumes:
+  prometheus:

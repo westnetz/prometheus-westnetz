@@ -1,0 +1,26 @@
+[
+    {
+        "labels": {
+            "host": "Google-DNS"
+        },
+        "targets": [
+            "8.8.8.8"
+        ]
+    },
+    {
+        "labels": {
+            "host": "Westnetz Router"
+        },
+        "targets": [
+            "185.142.180.1"
+        ]
+    },
+    {
+        "labels": {
+            "host": "Westnetz OOB"
+        },
+        "targets": [
+            "46.101.196.109"
+        ]
+    }
+]
