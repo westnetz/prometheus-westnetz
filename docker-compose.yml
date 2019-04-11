@@ -35,10 +35,24 @@ services:
     networks:
       - prometheus-exporters
       - prometheus-frontend
+  grafana:
+    image: grafana/grafana:6.1.3@sha256:8fad1cc242f9a6b61fa8ee28956022a89ca3d687f6733e7b1407ba513be174d5
+    read_only: yes
+    volumes:
+      - type: volume
+        source: grafana
+        target: /var/lib/grafana
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-polystat-panel"
+    networks:
+      - prometheus-frontend
 
 networks:
   prometheus-exporters:
   prometheus-frontend:
 
 volumes:
+  grafana:
   prometheus:
