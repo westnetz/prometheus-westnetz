@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  snmp-exporter:
+    image: prom/snmp-exporter:v0.15.0@sha256:dd340b95d0749c5af15a15601ba57d4169084263ea34d7c642dd72357705eba1
+    read_only: yes
+    volumes:
+      - type: bind
+        source: ./snmp-exporter/snmp.yml
+        target: /etc/snmp_exporter/snmp.yml
+        read_only: true
+    networks:
+      - prometheus-exporters
+
+networks:
+  prometheus-exporters:
