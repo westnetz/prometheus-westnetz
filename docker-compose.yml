@@ -48,10 +48,38 @@ services:
       GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-polystat-panel"
     networks:
       - prometheus-frontend
+      - traefik
+  traefik:
+    image: traefik:1.7-alpine@sha256:cf30141936f73599e1a46355592d08c88d74bd291f05104fe11a8bcce447c044
+    read_only: yes
+    command: --api --docker --docker.exposedbydefault=false
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
+        source: ./traefik.toml
+        target: /traefik.toml
+      - type: bind
+        source: ./acme.json
+        target: /acme.json
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:traefik.${HOSTNAME}"
+      - "traefik.frontend.auth.basic=${AUTH_BASIC}"
+      - "traefik.docker.network=traefik"
+      - "traefik.port=8080"
+    networks:
+      - traefik
 
 networks:
   prometheus-exporters:
   prometheus-frontend:
+  traefik:
+    external: true
 
 volumes:
   grafana:
