@@ -50,7 +50,7 @@ services:
       - prometheus-frontend
       - traefik
   traefik:
-    image: traefik:1.7-alpine@sha256:cf30141936f73599e1a46355592d08c88d74bd291f05104fe11a8bcce447c044
+    image: traefik:1.7-alpine@sha256:0531581bde9da0670fc2c7a4e419e1cc38abff74e7ba06410bf2b1b55c70ef15
     read_only: yes
     command: --api --docker --docker.exposedbydefault=false
     ports:
