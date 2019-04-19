@@ -12,6 +12,8 @@ services:
     networks:
       - prometheus-exporters
       - traefik
+    ports:
+      - 116:116/udp
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:snmp.${HOSTNAME}"

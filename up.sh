@@ -15,4 +15,7 @@ sed -i "s/@@SNMP_COMMUNITY@@/$SNMP_COMMUNITY/" snmp-exporter/snmp.yml
 
 docker network create traefik 2>/dev/null || true
 
+# Reset conntrack state so SNMP arrives at container after possible IP change
+conntrack -D -p udp
+
 exec docker-compose up
