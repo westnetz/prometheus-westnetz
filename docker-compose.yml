@@ -22,7 +22,7 @@ services:
     networks:
       - prometheus-exporters
   prometheus:
-    image: prom/prometheus:v2.8.1@sha256:7ebbdf175da46fa346ba1e24cf0299bf47c31d199ffc276df1c68ed323606c31
+    image: prom/prometheus:v2.9.1@sha256:e02bb3dec47631b4d31cede2d35ff901d892b57f33144406ee7994e8c94fb2d7
     read_only: yes
     volumes:
       - type: bind
