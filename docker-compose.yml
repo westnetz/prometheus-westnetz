@@ -11,6 +11,13 @@ services:
         read_only: true
     networks:
       - prometheus-exporters
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:snmp.${HOSTNAME}"
+      - "traefik.frontend.auth.basic=${AUTH_BASIC}"
+      - "traefik.docker.network=traefik"
+      - "traefik.port=3000"
   blackbox-exporter:
     image: prom/blackbox-exporter:v0.14.0@sha256:c20445e0cc628fa4b227fe2f694c22a314beb43fd8297095b6ee6cbc67161336
     read_only: yes
@@ -21,6 +28,13 @@ services:
         read_only: true
     networks:
       - prometheus-exporters
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:blackbox.${HOSTNAME}"
+      - "traefik.frontend.auth.basic=${AUTH_BASIC}"
+      - "traefik.docker.network=traefik"
+      - "traefik.port=3000"
   prometheus:
     image: prom/prometheus:v2.9.1@sha256:e02bb3dec47631b4d31cede2d35ff901d892b57f33144406ee7994e8c94fb2d7
     read_only: yes
@@ -35,6 +49,13 @@ services:
     networks:
       - prometheus-exporters
       - prometheus-frontend
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:prometheus.${HOSTNAME}"
+      - "traefik.frontend.auth.basic=${AUTH_BASIC}"
+      - "traefik.docker.network=traefik"
+      - "traefik.port=3000"
   grafana:
     image: grafana/grafana:6.1.4@sha256:c2100550937e7aa0f3e33c2fc46a8c9668c3b5f2f71a8885e304d35de9fea009
     read_only: yes
