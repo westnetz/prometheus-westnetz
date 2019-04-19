@@ -36,7 +36,7 @@ services:
       - prometheus-exporters
       - prometheus-frontend
   grafana:
-    image: grafana/grafana:6.1.3@sha256:8fad1cc242f9a6b61fa8ee28956022a89ca3d687f6733e7b1407ba513be174d5
+    image: grafana/grafana:6.1.4@sha256:c2100550937e7aa0f3e33c2fc46a8c9668c3b5f2f71a8885e304d35de9fea009
     read_only: yes
     volumes:
       - type: volume
