@@ -64,7 +64,7 @@ services:
         source: ./traefik.toml
         target: /traefik.toml
       - type: bind
-        source: ./acme.json
+        source: ../prometheus-westnetz-acme.json
         target: /acme.json
     labels:
       - "traefik.enable=true"
