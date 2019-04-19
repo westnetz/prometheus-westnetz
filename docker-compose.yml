@@ -38,6 +38,14 @@ services:
   prometheus:
     image: prom/prometheus:v2.9.1@sha256:e02bb3dec47631b4d31cede2d35ff901d892b57f33144406ee7994e8c94fb2d7
     read_only: yes
+    command:
+      # The following options are from https://github.com/prometheus/prometheus/blob/master/Dockerfile
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
+      # The following options are our own
+      - "--storage.tsdb.retention.size=60GB"
     volumes:
       - type: bind
         source: ./prometheus
