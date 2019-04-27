@@ -90,7 +90,7 @@ services:
       - prometheus-frontend
       - traefik
   traefik:
-    image: traefik:1.7-alpine@sha256:0531581bde9da0670fc2c7a4e419e1cc38abff74e7ba06410bf2b1b55c70ef15
+    image: traefik:1.7-alpine@sha256:21c7362d6f294752e78b76b61374c1cacbd5c66ba49a401d5a69be3ed0937671
     read_only: yes
     command: --api --docker --docker.exposedbydefault=false
     ports:
