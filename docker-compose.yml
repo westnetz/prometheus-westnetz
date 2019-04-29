@@ -69,7 +69,7 @@ services:
       - "traefik.docker.network=traefik"
       - "traefik.port=9090"
   grafana:
-    image: grafana/grafana:6.1.4@sha256:c2100550937e7aa0f3e33c2fc46a8c9668c3b5f2f71a8885e304d35de9fea009
+    image: grafana/grafana:6.1.6@sha256:d66b41cf7e0586274ca3e15e03299e4cfde48019fd756bb97cc9db57da9b0c86
     read_only: yes
     volumes:
       - type: volume
