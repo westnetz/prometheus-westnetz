@@ -2,6 +2,7 @@ version: "3.4"
 
 services:
   snmp-exporter:
+    restart: always
     image: prom/snmp-exporter:v0.15.0@sha256:dd340b95d0749c5af15a15601ba57d4169084263ea34d7c642dd72357705eba1
     read_only: yes
     volumes:
@@ -19,6 +20,7 @@ services:
       - "traefik.docker.network=traefik"
       - "traefik.port=9116"
   blackbox-exporter:
+    restart: always
     image: prom/blackbox-exporter:v0.14.0@sha256:c20445e0cc628fa4b227fe2f694c22a314beb43fd8297095b6ee6cbc67161336
     read_only: yes
     volumes:
@@ -36,6 +38,7 @@ services:
       - "traefik.docker.network=traefik"
       - "traefik.port=9115"
   prometheus:
+    restart: always
     image: prom/prometheus:v2.9.2@sha256:05350e0d1a577674442046961abf56b3e883dcd82346962f9e73f00667958f6b
     read_only: yes
     command:
@@ -69,6 +72,7 @@ services:
       - "traefik.docker.network=traefik"
       - "traefik.port=9090"
   grafana:
+    restart: always
     image: grafana/grafana:6.1.6@sha256:d66b41cf7e0586274ca3e15e03299e4cfde48019fd756bb97cc9db57da9b0c86
     read_only: yes
     volumes:
@@ -90,6 +94,7 @@ services:
       - prometheus-frontend
       - traefik
   traefik:
+    restart: always
     image: traefik:1.7-alpine@sha256:21c7362d6f294752e78b76b61374c1cacbd5c66ba49a401d5a69be3ed0937671
     read_only: yes
     command: --api --docker --docker.exposedbydefault=false
