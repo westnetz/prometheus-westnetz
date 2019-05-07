@@ -1,37 +1,38 @@
 # prometheus-westnetz
 
 This repository contains the glue to setup [Prometheus](https://prometheus.io/) together
-with [Grafana](https://grafana.com/) as a frontend on [CoreOS](https://coreos.com/), using
-[Ignition](https://coreos.com/ignition/docs/latest/) for that process.
+with [Grafana](https://grafana.com/) as a frontend using
+[Docker Compose](https://docs.docker.com/compose/).
 
 ## Usage
 
-First, unlock the repository with [git-crypt](https://github.com/AGWA/git-crypt).
+Before starting the stack, you need to provide it with some configuration parameters. As
+a starting point, you can use the example configuration:
 
 ```console
-git-crypt unlock
+cp .env.example .env
 ```
 
-Then, generate the ingition config. This requires docker to be usable locally:
+The stack should be started using systemd. A suitable unit looks like this:
+
+```ini
+[Unit]
+Description=Docker compose setup for Prometheus with Grafana
+After=docker.service
+Requires=docker.service
+
+[Service]
+EnvironmentFile=/srv/prometheus-westnetz/.env
+WorkingDirectory=/srv/prometheus-westnetz
+ExecStart=/srv/prometheus-westnetz/up.sh
+ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Once this unit is present, you should be able to start the stack using:
 
 ```console
-make -C ignition config
+systemctl start prometheus-westnetz.service
 ```
-
-Finally, spawn a machine. This example uses Digital Ocean:
-
-```console
-doctl compute droplet create prometheus.example.com \
-    --size s-1vcpu-1gb \
-    --region fra1 \
-    --image coreos-stable \
-    --ssh-keys your-key-id \
-    --user-data-file ignition/config.json
-```
-
-You need to ensure that `prometheus.example.com` resolves to the IP of the machine
-you just started.
-
-Once the machine has booted completely, Prometheus should be up and running, and you
-should be able to connect to Grafana using `admin:admin` as credentials, if you used
-the example configuration.
