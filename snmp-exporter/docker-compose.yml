@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   snmp-generator:
-    image: prom/snmp-generator:master@sha256:c4c53ff3a205523d4bb5c41f8a12940c20d6d8542b65516a9d994d097509bf52
+    image: prom/snmp-generator:master@sha256:c51adb8b4fb1bd3d8e43b82d8ed50b7aa64b991e854371f2e013c4d0e489dee3
     volumes:
       - type: bind
         source: .
