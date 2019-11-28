@@ -73,7 +73,7 @@ services:
       - "traefik.port=9090"
   grafana:
     restart: always
-    image: grafana/grafana:6.4.4@sha256:01f35fd54472850715866dfe5e6ec34783064558197a643d5a2b48b7791367dd
+    image: grafana/grafana:6.5.1@sha256:98352c51c952d749e74899302eaffea749423ee379548a4d3fb829a74291783d
     read_only: yes
     volumes:
       - type: volume
