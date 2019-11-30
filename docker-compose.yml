@@ -75,6 +75,8 @@ services:
     restart: always
     image: grafana/grafana:6.5.1@sha256:98352c51c952d749e74899302eaffea749423ee379548a4d3fb829a74291783d
     read_only: yes
+    tmpfs:
+      - /tmp
     volumes:
       - type: volume
         source: grafana
