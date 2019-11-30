@@ -66,3 +66,31 @@ modules:
         type: EnumAsInfo
     auth:
       community: "@@SNMP_COMMUNITY@@"
+
+# Eaton UPS
+#
+# IETF  DISMAN-EVENT-MIB
+# IETF  UPS-MIB
+# EATON XUPS-MIB https://raw.githubusercontent.com/librenms/librenms/master/mibs/ups/XUPS-MIB
+#
+  eaton_ups:
+    version: 3
+    walk:
+      - sysUpTimeInstance
+      - upsBatteryStatus
+      - upsSecondsOnBattery
+      - xupsBatTimeRemaining
+      - xupsBatVoltage
+      - xupsBatCurrent
+      - xupsBatCapacity
+      - xupsInputSource
+      - xupsOutputLoad
+      - xupsOutputWatts
+      - xupsOutputSource
+      - xupsEnvAmbientTemp
+      - xupsTestBatteryStatus
+    auth:
+      security_level: authPriv
+      username: "@@SNMP_COMMUNITY@@"
+      password: "@@SNMP_COMMUNITY@@"
+      priv_password: "@@SNMP_COMMUNITY@@"
