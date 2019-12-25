@@ -39,7 +39,7 @@ services:
       - "traefik.port=9115"
   prometheus:
     restart: always
-    image: prom/prometheus:v2.14.0@sha256:3d53ce329b25cc0c1bfc4c03be0496022d81335942e9e0518ded6d50a5e6c638
+    image: prom/prometheus:v2.15.1@sha256:7ff47b8cce6ecb7b456c6863d42a7f10bcbd040b21d7f1a912eb1b0936e9ad46
     read_only: yes
     command:
       # The following options are from https://github.com/prometheus/prometheus/blob/master/Dockerfile
