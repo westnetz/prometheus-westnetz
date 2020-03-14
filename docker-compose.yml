@@ -3,7 +3,7 @@ version: "3.4"
 services:
   snmp-exporter:
     restart: always
-    image: prom/snmp-exporter:v0.16.1@sha256:e28c907b3df681851f41fea19ac51c649da518232c7aeb58872283fc837e1fcb
+    image: prom/snmp-exporter:v0.17.0@sha256:ca4a65162cb746802cf7906548098407df7a925a2374f36d58d19e9321695895
     read_only: yes
     volumes:
       - type: bind
