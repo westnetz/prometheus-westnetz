@@ -37,6 +37,18 @@ services:
       - "traefik.frontend.auth.basic=${AUTH_BASIC}"
       - "traefik.docker.network=traefik"
       - "traefik.port=9115"
+  arubaos-exporter:
+    restart: always
+    image: quay.io/westnetz/arubaos-exporter:0.1.0
+    networks:
+      - prometheus-exporters
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:arubaos.${HOSTNAME}"
+      - "traefik.frontend.auth.basic=${AUTH_BASIC}"
+      - "traefik.docker.network=traefik"
+      - "traefik.port=8080"
   prometheus:
     restart: always
     image: prom/prometheus:v2.21.0@sha256:f3ada803723ccbc443ebea19f7ab24d3323def496e222134bf9ed54ae5b787bd
