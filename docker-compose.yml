@@ -21,7 +21,7 @@ services:
       - "traefik.port=9116"
   blackbox-exporter:
     restart: always
-    image: prom/blackbox-exporter:v0.17.0@sha256:d3e823580333ceedceadaa2bfea10c8efd4700c8ec0415df72f83c34e1f93314
+    image: prom/blackbox-exporter:v0.19.0@sha256:94de5897eef1b3c1ba7fbfebb9af366e032c0ff915a52c0066ff2e0c1bcd2e45
     read_only: yes
     volumes:
       - type: bind
