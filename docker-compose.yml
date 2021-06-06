@@ -109,7 +109,7 @@ services:
       - traefik
   traefik:
     restart: always
-    image: traefik:1.7.26-alpine@sha256:3cbe9e62ef26a9ac17b25702754dfbf56dd346850170be90eabd370f24190ef1
+    image: traefik:1.7.26-alpine@sha256:07dce138fe44640f0c52b2f7f4fb2e92fb508ded8ae57f9a7e0fe8fdf6296673
     read_only: yes
     command: --api --docker --docker.exposedbydefault=false
     ports:
