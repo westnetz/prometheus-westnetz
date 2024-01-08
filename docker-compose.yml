@@ -19,6 +19,11 @@ services:
       - "traefik.frontend.auth.basic=${AUTH_BASIC}"
       - "traefik.docker.network=traefik"
       - "traefik.port=9116"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
   blackbox-exporter:
     restart: always
     image: prom/blackbox-exporter:v0.17.0@sha256:d3e823580333ceedceadaa2bfea10c8efd4700c8ec0415df72f83c34e1f93314
@@ -37,6 +42,11 @@ services:
       - "traefik.frontend.auth.basic=${AUTH_BASIC}"
       - "traefik.docker.network=traefik"
       - "traefik.port=9115"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
   arubaos-exporter:
     restart: always
     image: quay.io/westnetz/arubaos-exporter:0.1.1
@@ -49,6 +59,11 @@ services:
       - "traefik.frontend.auth.basic=${AUTH_BASIC}"
       - "traefik.docker.network=traefik"
       - "traefik.port=8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
   prometheus:
     restart: always
     image: prom/prometheus:v2.21.0@sha256:f3ada803723ccbc443ebea19f7ab24d3323def496e222134bf9ed54ae5b787bd
@@ -83,6 +98,11 @@ services:
       - "traefik.frontend.auth.basic=${AUTH_BASIC}"
       - "traefik.docker.network=traefik"
       - "traefik.port=9090"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
   grafana:
     restart: always
     image: grafana/grafana:6.7.4@sha256:43340812d14aa3e60810b85ee9caaf0e423e7aad01000b704cd8ddfb2bb1248e
@@ -107,6 +127,11 @@ services:
     networks:
       - prometheus-frontend
       - traefik
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
   traefik:
     restart: always
     image: traefik:1.7.26-alpine@sha256:3cbe9e62ef26a9ac17b25702754dfbf56dd346850170be90eabd370f24190ef1
@@ -133,6 +158,11 @@ services:
       - "traefik.port=8080"
     networks:
       - traefik
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "7"
 
 networks:
   prometheus-exporters:
