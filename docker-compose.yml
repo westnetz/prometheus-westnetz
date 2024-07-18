@@ -134,7 +134,7 @@ services:
         max-file: "7"
   traefik:
     restart: always
-    image: traefik:1.7.26-alpine@sha256:3cbe9e62ef26a9ac17b25702754dfbf56dd346850170be90eabd370f24190ef1
+    image: traefik:v1.7.34-alpine@sha256:7fa25a5a54a44ddab4d6b5e40bf03175ae617b460c0ee4a744b859edfdf12c9a
     read_only: yes
     command: --api --docker --docker.exposedbydefault=false
     ports:
