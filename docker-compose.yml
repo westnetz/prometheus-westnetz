@@ -66,7 +66,7 @@ services:
         max-file: "7"
   prometheus:
     restart: always
-    image: prom/prometheus:v2.21.0@sha256:f3ada803723ccbc443ebea19f7ab24d3323def496e222134bf9ed54ae5b787bd
+    image: prom/prometheus:v2.55.0@sha256:378f4e03703557d1c6419e6caccf922f96e6d88a530f7431d66a4c4f4b1000fe
     read_only: yes
     command:
       # The following options are from https://github.com/prometheus/prometheus/blob/master/Dockerfile
