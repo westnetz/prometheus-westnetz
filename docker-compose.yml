@@ -105,7 +105,7 @@ services:
         max-file: "7"
   grafana:
     restart: always
-    image: grafana/grafana:6.7.4@sha256:43340812d14aa3e60810b85ee9caaf0e423e7aad01000b704cd8ddfb2bb1248e
+    image: grafana/grafana:11.6.0@sha256:62d2b9d20a19714ebfe48d1bb405086081bc602aa053e28cf6d73c7537640dfb
     read_only: yes
     tmpfs:
       - /tmp
