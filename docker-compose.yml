@@ -26,7 +26,7 @@ services:
         max-file: "7"
   blackbox-exporter:
     restart: always
-    image: prom/blackbox-exporter:v0.17.0@sha256:d3e823580333ceedceadaa2bfea10c8efd4700c8ec0415df72f83c34e1f93314
+    image: prom/blackbox-exporter:v0.28.0@sha256:43027b43fb785b7c5adc53bd3b5dbc1a258270a2e8aff24f477b45c4e38dac68
     read_only: yes
     volumes:
       - type: bind
